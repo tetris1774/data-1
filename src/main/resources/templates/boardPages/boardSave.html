@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{component/config :: config}"></th:block>
+</head>
+<body>
+<div th:replace="~{component/header :: header}"></div>
+<div th:replace="~{component/nav :: nav}"></div>
+
+<div class="container mt-5 mb-5">
+    <!-- 화면에 보여질 내용이 들어갈 부분 -->
+    <form action="/board/save" method="post" class="row g-3" enctype="multipart/form-data">
+        <input type="text" name="boardWriter" class="form-control" placeholder="작성자" th:value="${session.loginEmail}" readonly>
+        <input type="text" name="boardTitle" class="form-control" placeholder="제목">
+        <textarea name="boardContents" cols="30" rows="10" class="form-control" placeholder="내용을 입력하세요"></textarea>
+        <input type="file" name="boardFile" class="form-control" multiple>
+        <input type="submit" value="작성" class="btn btn-primary">
+    </form>
+</div>
+
+<div th:replace="~{component/footer :: footer}"></div>
+
+</body>
+</html>
